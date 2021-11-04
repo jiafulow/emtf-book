@@ -20,7 +20,12 @@
     text-decoration: none;
 }
 
-#main-content li p {
+main.bd-content #main-content li p {
     margin-top: 0;
     margin-bottom: 0;
+}
+
+main.bd-content #main-content .prev-next-bottom {
+    margin-top: 6em;
+    margin-bottom: 1em;
 }
