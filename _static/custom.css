@@ -19,3 +19,8 @@
     color: rgba(var(--pst-color-link), 1);
     text-decoration: none;
 }
+
+#main-content li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
