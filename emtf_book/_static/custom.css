@@ -1,9 +1,46 @@
+:root {
+    /* base font size */
+    --pst-font-size-base: 16px;
+
+    /* heading font sizes */
+    --pst-font-size-h1: 32px;
+    --pst-font-size-h2: 26px;
+    --pst-font-size-h3: 20px;
+    --pst-font-size-h4: 16px;
+    --pst-font-size-h5: 14px;
+    --pst-font-size-h6: 13.2px;
+
+    /* colors */
+    --pst-color-primary: 0, 60, 102;
+    --pst-color-admonition-note: 87, 154, 202;
+    --pst-color-h1: var(--pst-color-primary);
+    --pst-color-h2: var(--pst-color-primary);
+    --pst-color-h3: var(--pst-color-primary);
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+tt, code, kbd, pre, samp {
+    font-family: var(--pst-font-family-monospace) !important;
+    color: rgba(var(--pst-color-paragraph),1);
+}
+
+code {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+}
+
 #site-navigation {
-    background-color: #eee;
+    background-color: #f6f8fa;
 }
 
 #site-navigation nav ul.nav li a, #site-navigation nav ul.nav ul li a {
-    color: #333;
+    color: #24292f;
 }
 
 #site-navigation nav ul.nav a:hover, #site-navigation nav ul.nav li.active>a, #site-navigation nav ul.nav li.active>a:hover {
@@ -12,10 +49,40 @@
 }
 
 #site-navigation div.navbar_extra_footer {
-    color: #333;
+    color: #24292f;
 }
 
 #site-navigation div.navbar_extra_footer a:hover {
     color: rgba(var(--pst-color-link), 1);
     text-decoration: none;
+}
+
+main.bd-content #main-content h1 {
+    color: rgba(var(--pst-color-h1), 1);
+}
+
+main.bd-content #main-content h2 {
+    color: rgba(var(--pst-color-h2), 1);
+}
+
+main.bd-content #main-content h3 {
+    color: rgba(var(--pst-color-h3), 1);
+}
+
+main.bd-content #main-content .prev-next-bottom {
+    margin-top: 6em;
+    margin-bottom: 1em;
+}
+
+main.bd-content #main-content .prev-next-bottom a.right-next:hover, main.bd-content #main-content .prev-next-bottom a.left-prev:hover {
+    text-decoration: none;
+}
+
+main.bd-content #main-content .prev-next-bottom .right-next .prevnext-title, main.bd-content #main-content .prev-next-bottom .left-prev .prevnext-title {
+    color: rgba(var(--pst-color-h2), 1);
+}
+
+main.bd-content #main-content li p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
