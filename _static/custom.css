@@ -20,12 +20,28 @@
     text-decoration: none;
 }
 
-main.bd-content #main-content li p {
-    margin-top: 0;
-    margin-bottom: 0;
+main.bd-content #main-content h1 {
+    color: rgba(var(--pst-color-h1), 1);
+}
+
+main.bd-content #main-content h2 {
+    color: rgba(var(--pst-color-h2), 1);
 }
 
 main.bd-content #main-content .prev-next-bottom {
     margin-top: 6em;
     margin-bottom: 1em;
+}
+
+main.bd-content #main-content .prev-next-bottom a.right-next:hover, main.bd-content #main-content .prev-next-bottom a.left-prev:hover {
+    text-decoration: none;
+}
+
+main.bd-content #main-content .prev-next-bottom .right-next .prevnext-title, main.bd-content #main-content .prev-next-bottom .left-prev .prevnext-title {
+    color: rgba(var(--pst-color-h2), 1);
+}
+
+main.bd-content #main-content li p {
+    margin-top: 0;
+    margin-bottom: 0;
 }
