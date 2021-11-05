@@ -9,6 +9,12 @@
     --pst-font-size-h4: 16px;
     --pst-font-size-h5: 14px;
     --pst-font-size-h6: 13.2px;
+
+    /* colors */
+    --pst-color-primary: 0, 60, 102;
+    --pst-color-h1: var(--pst-color-primary);
+    --pst-color-h2: var(--pst-color-primary);
+    --pst-color-h3: var(--pst-color-primary);
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
@@ -56,6 +62,10 @@ main.bd-content #main-content h1 {
 
 main.bd-content #main-content h2 {
     color: rgba(var(--pst-color-h2), 1);
+}
+
+main.bd-content #main-content h3 {
+    color: rgba(var(--pst-color-h3), 1);
 }
 
 main.bd-content #main-content .prev-next-bottom {
