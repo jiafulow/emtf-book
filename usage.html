@@ -300,13 +300,17 @@ scram b -j8
 </div>
 <div class="section" id="how-to-run-the-emtf-emulator-code">
 <h3>How to run the EMTF++ emulator code?<a class="headerlink" href="#how-to-run-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
-<p>To run the emulator, append the following lines in a cfg file:</p>
+<p>To run the emulator, append the following lines in a cfg file (e.g. <code class="docutils literal notranslate"><span class="pre">my_cfg.py</span></code>):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create phase2L1EMTFSequence and include it in L1simulation_step</span>
 <span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">simCscTriggerPrimitiveDigisForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">rpcRecHitsForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFProducer</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">L1simulation_step</span> <span class="o">+=</span> <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span>
+</pre></div>
+</div>
+<p>Then:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmsRun my_cfg.py
 </pre></div>
 </div>
 </div>
@@ -317,7 +321,7 @@ scram b -j8
 <li><p><a class="reference external" href="https://github.com/jiafulow/L1TMuonSimulations-Jun2021">https://github.com/jiafulow/L1TMuonSimulations-Jun2021</a></p></li>
 </ul>
 <p>Set up instructions (after the emulator has been set up):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should be in $CMSSW_BASE/src</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should be in $CMSSW_BASE/src/</span>
 git clone git@github.com:jiafulow/L1TMuonSimulations-Jun2021.git L1TMuonSimulations/
 scram b -j <span class="m">8</span>
 </pre></div>

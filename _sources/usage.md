@@ -50,7 +50,7 @@ scram b -j8
 
 ### How to run the EMTF++ emulator code?
 
-To run the emulator, append the following lines in a cfg file:
+To run the emulator, append the following lines in a cfg file (e.g. `my_cfg.py`):
 
 ``` python
 # Create phase2L1EMTFSequence and include it in L1simulation_step
@@ -59,6 +59,12 @@ process.load('L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi')
 process.load('L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi')
 process.phase2L1EMTFSequence = cms.Sequence(process.simCscTriggerPrimitiveDigisForEMTF+process.rpcRecHitsForEMTF+process.phase2L1EMTFProducer)
 process.L1simulation_step += process.phase2L1EMTFSequence
+```
+
+Then:
+
+``` bash
+cmsRun my_cfg.py
 ```
 
 ### How to make private ntuples?
@@ -70,7 +76,7 @@ There is an additional repository with the ntupler and other utilities:
 Set up instructions (after the emulator has been set up):
 
 ``` bash
-# You should be in $CMSSW_BASE/src
+# You should be in $CMSSW_BASE/src/
 git clone git@github.com:jiafulow/L1TMuonSimulations-Jun2021.git L1TMuonSimulations/
 scram b -j 8
 ```
