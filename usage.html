@@ -211,13 +211,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-make-the-private-ntuples">
-     How to make the private ntuples?
+    <a class="reference internal nav-link" href="#how-to-make-private-ntuples">
+     How to make private ntuples?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-make-the-private-ntuples-with-crab3">
-     How to make the private ntuples with CRAB3?
+    <a class="reference internal nav-link" href="#how-to-make-private-ntuples-with-crab3">
+     How to make private ntuples with CRAB3?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -253,9 +253,10 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>The Phase-2 EMTF++ emulator is completely decoupled from the Phase-1 EMTF emulator, so that they can evolve independently. The EMTF++ emulator has very basic functionality and is not capable of doing everything that the EMTF emulator does. It is expected that more features will need to be added in the future.</p>
-<p><strong>EMTF++ emulator structure</strong> It behaves as a wrapper around the HLS source code. The wrapper part handles the typical CMSSW stuff (e.g. handling trigger primitive objects). The core is the HLS source code that implements the actual algorithm.</p>
-<p><strong>Modifying HLS source code</strong> HLS stuff is being developed outside of CMSSW in a separate repository. It follows the setup of a Vivado HLS project, which allows one to perform HLS synthesis and FW implementation. Once satisfied, the HLS source code is then imported into the emulator.</p>
-<p>Note that the HLS FW is not complete yet. It is missing some important features: the interface to the trigger primitives, the coordinate conversion, the displaced muon capabilities, and the demands from the downstream (i.e. GMT).</p>
+<p><strong>EMTF++ emulator structure</strong> — It behaves as a wrapper around the HLS source code. The wrapper part handles the typical CMSSW stuff (e.g. input and output objects, event setup, etc). The core is the HLS source code that implements the actual algorithm.</p>
+<p><strong>Modifying HLS source code</strong> — HLS stuff is being developed in a separate repository outside of CMSSW. It follows the setup of a Vivado HLS project, which allows one to perform FW synthesis and implementation. Once satisfied, the HLS source code is then imported into the emulator.</p>
+<p>Note that the HLS FW is not complete yet. Notably, it is missing: the interface to the trigger primitives, the coordinate conversion, the displaced muon capabilities, and the demands from the downstream (i.e. GMT).</p>
+<p><strong>Private ntuples</strong> — The various studies are usually done with private ntuples. Basically, a ntupler is used to extract the EMTF++ emulator output and store them in a simple ROOT TTree.</p>
 </div>
 <div class="section" id="how-to-guide">
 <h2>How-to Guide<a class="headerlink" href="#how-to-guide" title="Permalink to this headline">¶</a></h2>
@@ -265,11 +266,11 @@
 <div class="section" id="how-to-run-the-emtf-emulator-code">
 <h3>How to run the EMTF++ emulator code?<a class="headerlink" href="#how-to-run-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="how-to-make-the-private-ntuples">
-<h3>How to make the private ntuples?<a class="headerlink" href="#how-to-make-the-private-ntuples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-make-private-ntuples">
+<h3>How to make private ntuples?<a class="headerlink" href="#how-to-make-private-ntuples" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="how-to-make-the-private-ntuples-with-crab3">
-<h3>How to make the private ntuples with CRAB3?<a class="headerlink" href="#how-to-make-the-private-ntuples-with-crab3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-make-private-ntuples-with-crab3">
+<h3>How to make private ntuples with CRAB3?<a class="headerlink" href="#how-to-make-private-ntuples-with-crab3" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="how-to-check-out-the-hls-source-code">
 <h3>How to check out the HLS source code?<a class="headerlink" href="#how-to-check-out-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
