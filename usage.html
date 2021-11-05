@@ -282,8 +282,9 @@
 <li><p><a class="reference external" href="https://github.com/jiafulow/Phase2L1EMTF-Jun2021">https://github.com/jiafulow/Phase2L1EMTF-Jun2021</a></p></li>
 <li><p><a class="reference external" href="https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021">https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021</a></p></li>
 </ul>
-<p>Setup instructions:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SCRAM_ARCH</span><span class="o">=</span>slc7_amd64_gcc820
+<p>Set up instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /cvmfs/cms.cern.ch/cmsset_default.sh
+<span class="nb">export</span> <span class="nv">SCRAM_ARCH</span><span class="o">=</span>slc7_amd64_gcc820
 cmsrel CMSSW_11_1_7
 <span class="nb">cd</span> CMSSW_11_1_7/src
 cmsenv
@@ -299,17 +300,38 @@ scram b -j8
 </div>
 <div class="section" id="how-to-run-the-emtf-emulator-code">
 <h3>How to run the EMTF++ emulator code?<a class="headerlink" href="#how-to-run-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
-<p>To run the emulator, include the following lines in a cfg file:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi&#39;</span><span class="p">)</span>
+<p>To run the emulator, append the following lines in a cfg file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create phase2L1EMTFSequence and include it in L1simulation_step</span>
+<span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi&#39;</span><span class="p">)</span>
 <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">simCscTriggerPrimitiveDigisForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">rpcRecHitsForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFProducer</span><span class="p">)</span>
-<span class="n">process</span><span class="o">.</span><span class="n">SimL1Emulator</span> <span class="o">+=</span> <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span>
+<span class="n">process</span><span class="o">.</span><span class="n">L1simulation_step</span> <span class="o">+=</span> <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-make-private-ntuples">
 <h3>How to make private ntuples?<a class="headerlink" href="#how-to-make-private-ntuples" title="Permalink to this headline">¶</a></h3>
+<p>There is an additional repository with the ntupler and other utilities:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiafulow/L1TMuonSimulations-Jun2021">https://github.com/jiafulow/L1TMuonSimulations-Jun2021</a></p></li>
+</ul>
+<p>Set up instructions (after the emulator has been set up):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should be in $CMSSW_BASE/src</span>
+git clone git@github.com:jiafulow/L1TMuonSimulations-Jun2021.git L1TMuonSimulations/
+scram b -j <span class="m">8</span>
+</pre></div>
+</div>
+<p>To generate single muon particle gun ntuples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/</span>
+cmsRun pset_SingleMuon_PosEnd_2GeV_Phase2HLTTDRSummer20.py
+</pre></div>
+</div>
+<p>To generate single neutrino PU200 ntuples:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/</span>
+cmsRun pset_SingleNeutrino_PU200_Phase2HLTTDRSummer20.py
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-make-private-ntuples-with-crab3">
 <h3>How to make private ntuples with CRAB3?<a class="headerlink" href="#how-to-make-private-ntuples-with-crab3" title="Permalink to this headline">¶</a></h3>

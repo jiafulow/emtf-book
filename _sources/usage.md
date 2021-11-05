@@ -31,9 +31,10 @@ The code repositories are:
 - <https://github.com/jiafulow/Phase2L1EMTF-Jun2021>
 - <https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021>
 
-Setup instructions:
+Set up instructions:
 
 ``` bash
+source /cvmfs/cms.cern.ch/cmsset_default.sh
 export SCRAM_ARCH=slc7_amd64_gcc820
 cmsrel CMSSW_11_1_7
 cd CMSSW_11_1_7/src
@@ -49,17 +50,44 @@ scram b -j8
 
 ### How to run the EMTF++ emulator code?
 
-To run the emulator, include the following lines in a cfg file:
+To run the emulator, append the following lines in a cfg file:
 
 ``` python
+# Create phase2L1EMTFSequence and include it in L1simulation_step
 process.load('L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi')
 process.load('L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi')
 process.load('L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi')
 process.phase2L1EMTFSequence = cms.Sequence(process.simCscTriggerPrimitiveDigisForEMTF+process.rpcRecHitsForEMTF+process.phase2L1EMTFProducer)
-process.SimL1Emulator += process.phase2L1EMTFSequence
+process.L1simulation_step += process.phase2L1EMTFSequence
 ```
 
 ### How to make private ntuples?
+
+There is an additional repository with the ntupler and other utilities:
+
+- <https://github.com/jiafulow/L1TMuonSimulations-Jun2021>
+
+Set up instructions (after the emulator has been set up):
+
+``` bash
+# You should be in $CMSSW_BASE/src
+git clone git@github.com:jiafulow/L1TMuonSimulations-Jun2021.git L1TMuonSimulations/
+scram b -j 8
+```
+
+To generate single muon particle gun ntuples:
+
+``` bash
+# You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/
+cmsRun pset_SingleMuon_PosEnd_2GeV_Phase2HLTTDRSummer20.py
+```
+
+To generate single neutrino PU200 ntuples:
+
+``` bash
+# You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/
+cmsRun pset_SingleNeutrino_PU200_Phase2HLTTDRSummer20.py
+```
 
 ### How to make private ntuples with CRAB3?
 
