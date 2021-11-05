@@ -70,11 +70,6 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">emtf-book</h1>
@@ -190,6 +185,61 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview">
+   Overview
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-guide">
+   How-to Guide
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-check-out-the-emtf-emulator-code">
+     How to check out the EMTF++ emulator code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-run-the-emtf-emulator-code">
+     How to run the EMTF++ emulator code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-make-the-private-ntuples">
+     How to make the private ntuples?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-make-the-private-ntuples-with-crab3">
+     How to make the private ntuples with CRAB3?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-check-out-the-hls-source-code">
+     How to check out the HLS source code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-run-the-hls-source-code">
+     How to run the HLS source code?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-import-the-hls-source-code-into-the-emulator">
+     How to import the HLS source code into the emulator?
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -200,6 +250,37 @@
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="usage">
 <h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The Phase-2 EMTF++ emulator is completely decoupled from the Phase-1 EMTF emulator, so that they can evolve independently. The EMTF++ emulator has very basic functionality and is not capable of doing everything that the EMTF emulator does. It is expected that more features will need to be added in the future.</p>
+<p><strong>EMTF++ emulator structure</strong> It behaves as a wrapper around the HLS source code. The wrapper part handles the typical CMSSW stuff (e.g. handling trigger primitive objects). The core is the HLS source code that implements the actual algorithm.</p>
+<p><strong>Modifying HLS source code</strong> HLS stuff is being developed outside of CMSSW in a separate repository. It follows the setup of a Vivado HLS project, which allows one to perform HLS synthesis and FW implementation. Once satisfied, the HLS source code is then imported into the emulator.</p>
+<p>Note that the HLS FW is not complete yet. It is missing some important features: the interface to the trigger primitives, the coordinate conversion, the displaced muon capabilities, and the demands from the downstream (i.e. GMT).</p>
+</div>
+<div class="section" id="how-to-guide">
+<h2>How-to Guide<a class="headerlink" href="#how-to-guide" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-check-out-the-emtf-emulator-code">
+<h3>How to check out the EMTF++ emulator code?<a class="headerlink" href="#how-to-check-out-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-run-the-emtf-emulator-code">
+<h3>How to run the EMTF++ emulator code?<a class="headerlink" href="#how-to-run-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-make-the-private-ntuples">
+<h3>How to make the private ntuples?<a class="headerlink" href="#how-to-make-the-private-ntuples" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-make-the-private-ntuples-with-crab3">
+<h3>How to make the private ntuples with CRAB3?<a class="headerlink" href="#how-to-make-the-private-ntuples-with-crab3" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-check-out-the-hls-source-code">
+<h3>How to check out the HLS source code?<a class="headerlink" href="#how-to-check-out-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-run-the-hls-source-code">
+<h3>How to run the HLS source code?<a class="headerlink" href="#how-to-run-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-import-the-hls-source-code-into-the-emulator">
+<h3>How to import the HLS source code into the emulator?<a class="headerlink" href="#how-to-import-the-hls-source-code-into-the-emulator" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
