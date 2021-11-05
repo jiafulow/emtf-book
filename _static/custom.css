@@ -1,9 +1,9 @@
 #site-navigation {
-    background-color: #eee;
+    background-color: #f6f8fa;
 }
 
 #site-navigation nav ul.nav li a, #site-navigation nav ul.nav ul li a {
-    color: #333;
+    color: #24292f;
 }
 
 #site-navigation nav ul.nav a:hover, #site-navigation nav ul.nav li.active>a, #site-navigation nav ul.nav li.active>a:hover {
@@ -12,7 +12,7 @@
 }
 
 #site-navigation div.navbar_extra_footer {
-    color: #333;
+    color: #24292f;
 }
 
 #site-navigation div.navbar_extra_footer a:hover {
