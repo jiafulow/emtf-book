@@ -8,4 +8,4 @@ In particular, these pages are useful:
 - [Create your first book](https://jupyterbook.org/start/your-first-book.html)
 - [Host your book on the internet](https://jupyterbook.org/publish/web.html)
 
-[GitHub Actions](https://docs.github.com/en/actions) is used to build the book automatically in the continuous integration fashion.
+The source repository is [here](https://github.com/jiafulow/emtf-book). [GitHub Actions](https://docs.github.com/en/actions) is used to build the book automatically in the continuous integration fashion.
