@@ -1,3 +1,33 @@
+:root {
+    /* base font size */
+    --pst-font-size-base: 16px;
+
+    /* heading font sizes */
+    --pst-font-size-h1: 32px;
+    --pst-font-size-h2: 26px;
+    --pst-font-size-h3: 20px;
+    --pst-font-size-h4: 16px;
+    --pst-font-size-h5: 14px;
+    --pst-font-size-h6: 13.2px;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+tt, code, kbd, pre, samp {
+    font-family: var(--pst-font-family-monospace) !important;
+    color: rgba(var(--pst-color-paragraph),1);
+}
+
+code {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(175, 184, 193, 0.2);
+    border-radius: 6px;
+}
+
 #site-navigation {
     background-color: #f6f8fa;
 }
