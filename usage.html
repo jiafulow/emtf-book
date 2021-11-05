@@ -201,8 +201,13 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-check-out-the-emtf-emulator-code">
-     How to check out the EMTF++ emulator code?
+    <a class="reference internal nav-link" href="#prerequisites">
+     Prerequisites
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-set-up-the-emtf-emulator-code">
+     How to set up the EMTF++ emulator code?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -221,8 +226,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-check-out-the-hls-source-code">
-     How to check out the HLS source code?
+    <a class="reference internal nav-link" href="#how-to-set-up-the-hls-source-code">
+     How to set up the HLS source code?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -260,11 +265,48 @@
 </div>
 <div class="section" id="how-to-guide">
 <h2>How-to Guide<a class="headerlink" href="#how-to-guide" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="how-to-check-out-the-emtf-emulator-code">
-<h3>How to check out the EMTF++ emulator code?<a class="headerlink" href="#how-to-check-out-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="prerequisites">
+<h3>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>You must have access to a machine with CMSSW installed.</p></li>
+<li><p>You should have some experience with the CMSSW environment.</p></li>
+<li><p>You should be comfortable with Bash and Git.</p></li>
+<li><p>For the HLS stuff, you should have some experience with the HDL and HLS languages.</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-set-up-the-emtf-emulator-code">
+<h3>How to set up the EMTF++ emulator code?<a class="headerlink" href="#how-to-set-up-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
+<p>The emulator is based on <code class="docutils literal notranslate"><span class="pre">CMSSW_11_1_7</span></code>. The emulator code is put in <code class="docutils literal notranslate"><span class="pre">L1Trigger/Phase2L1EMTF/</span></code>, and the data format code is put in <code class="docutils literal notranslate"><span class="pre">DataFormats/L1TMuonPhase2/</span></code>.</p>
+<p>The code repositories are:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiafulow/Phase2L1EMTF-Jun2021">https://github.com/jiafulow/Phase2L1EMTF-Jun2021</a></p></li>
+<li><p><a class="reference external" href="https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021">https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021</a></p></li>
+</ul>
+<p>Setup instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SCRAM_ARCH</span><span class="o">=</span>slc7_amd64_gcc820
+cmsrel CMSSW_11_1_7
+<span class="nb">cd</span> CMSSW_11_1_7/src
+cmsenv
+<span class="c1"># Checkout repos</span>
+git clone git@github.com:jiafulow/Phase2L1EMTF-Jun2021.git L1Trigger/Phase2L1EMTF/
+git clone git@github.com:jiafulow/L1TMuonPhase2DataFormats-Jun2021.git DataFormats/L1TMuonPhase2/
+<span class="c1"># Modify hls.xml to ignore certain warnings</span>
+sed -i <span class="s1">&#39;s@\(.*use name.*\)@\1\n  &lt;flags CXXFLAGS=&quot;-Wno-int-in-bool-context -Wno-uninitialized -Wno-maybe-uninitialized&quot;/&gt;@&#39;</span> ../config/toolbox/slc7_amd64_gcc820/tools/selected/hls.xml
+<span class="c1"># Compile</span>
+scram b -j8
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-run-the-emtf-emulator-code">
 <h3>How to run the EMTF++ emulator code?<a class="headerlink" href="#how-to-run-the-emtf-emulator-code" title="Permalink to this headline">¶</a></h3>
+<p>To run the emulator, include the following lines in a cfg file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi&#39;</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span> <span class="o">=</span> <span class="n">cms</span><span class="o">.</span><span class="n">Sequence</span><span class="p">(</span><span class="n">process</span><span class="o">.</span><span class="n">simCscTriggerPrimitiveDigisForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">rpcRecHitsForEMTF</span><span class="o">+</span><span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFProducer</span><span class="p">)</span>
+<span class="n">process</span><span class="o">.</span><span class="n">SimL1Emulator</span> <span class="o">+=</span> <span class="n">process</span><span class="o">.</span><span class="n">phase2L1EMTFSequence</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-make-private-ntuples">
 <h3>How to make private ntuples?<a class="headerlink" href="#how-to-make-private-ntuples" title="Permalink to this headline">¶</a></h3>
@@ -272,8 +314,8 @@
 <div class="section" id="how-to-make-private-ntuples-with-crab3">
 <h3>How to make private ntuples with CRAB3?<a class="headerlink" href="#how-to-make-private-ntuples-with-crab3" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="how-to-check-out-the-hls-source-code">
-<h3>How to check out the HLS source code?<a class="headerlink" href="#how-to-check-out-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-set-up-the-hls-source-code">
+<h3>How to set up the HLS source code?<a class="headerlink" href="#how-to-set-up-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="how-to-run-the-hls-source-code">
 <h3>How to run the HLS source code?<a class="headerlink" href="#how-to-run-the-hls-source-code" title="Permalink to this headline">¶</a></h3>

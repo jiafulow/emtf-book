@@ -15,15 +15,55 @@ Note that the HLS FW is incomplete at the moment. Notably, it is missing: the in
 
 ## How-to Guide
 
-### How to check out the EMTF++ emulator code?
+### Prerequisites
+
+- You must have access to a machine with CMSSW installed.
+- You should have some experience with the CMSSW environment.
+- You should be comfortable with Bash and Git.
+- For the HLS stuff, you should have some experience with the HDL and HLS languages.
+
+### How to set up the EMTF++ emulator code?
+
+The emulator is based on `CMSSW_11_1_7`. The emulator code is put in `L1Trigger/Phase2L1EMTF/`, and the data format code is put in `DataFormats/L1TMuonPhase2/`.
+
+The code repositories are:
+
+- <https://github.com/jiafulow/Phase2L1EMTF-Jun2021>
+- <https://github.com/jiafulow/L1TMuonPhase2DataFormats-Jun2021>
+
+Setup instructions:
+
+``` bash
+export SCRAM_ARCH=slc7_amd64_gcc820
+cmsrel CMSSW_11_1_7
+cd CMSSW_11_1_7/src
+cmsenv
+# Checkout repos
+git clone git@github.com:jiafulow/Phase2L1EMTF-Jun2021.git L1Trigger/Phase2L1EMTF/
+git clone git@github.com:jiafulow/L1TMuonPhase2DataFormats-Jun2021.git DataFormats/L1TMuonPhase2/
+# Modify hls.xml to ignore certain warnings
+sed -i 's@\(.*use name.*\)@\1\n  <flags CXXFLAGS="-Wno-int-in-bool-context -Wno-uninitialized -Wno-maybe-uninitialized"/>@' ../config/toolbox/slc7_amd64_gcc820/tools/selected/hls.xml
+# Compile
+scram b -j8
+```
 
 ### How to run the EMTF++ emulator code?
+
+To run the emulator, include the following lines in a cfg file:
+
+``` python
+process.load('L1Trigger.Phase2L1EMTF.simCscTriggerPrimitiveDigisForEMTF_cfi')
+process.load('L1Trigger.Phase2L1EMTF.rpcRecHitsForEMTF_cfi')
+process.load('L1Trigger.Phase2L1EMTF.phase2L1EMTFProducer_cfi')
+process.phase2L1EMTFSequence = cms.Sequence(process.simCscTriggerPrimitiveDigisForEMTF+process.rpcRecHitsForEMTF+process.phase2L1EMTFProducer)
+process.SimL1Emulator += process.phase2L1EMTFSequence
+```
 
 ### How to make private ntuples?
 
 ### How to make private ntuples with CRAB3?
 
-### How to check out the HLS source code?
+### How to set up the HLS source code?
 
 ### How to run the HLS source code?
 
