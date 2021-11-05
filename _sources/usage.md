@@ -75,14 +75,14 @@ git clone git@github.com:jiafulow/L1TMuonSimulations-Jun2021.git L1TMuonSimulati
 scram b -j 8
 ```
 
-To generate single muon particle gun ntuples:
+To generate single muon particle gun ntuples (using the parameters from the `Phase2HLTTDRSummer20` MC campaign):
 
 ``` bash
 # You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/
 cmsRun pset_SingleMuon_PosEnd_2GeV_Phase2HLTTDRSummer20.py
 ```
 
-To generate single neutrino PU200 ntuples:
+To generate single neutrino PU200 ntuples (also `Phase2HLTTDRSummer20`):
 
 ``` bash
 # You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/
@@ -90,6 +90,10 @@ cmsRun pset_SingleNeutrino_PU200_Phase2HLTTDRSummer20.py
 ```
 
 ### How to make private ntuples with CRAB3?
+
+If you already have your own CRAB3 setup, you can just use it. If you don't, this is my setup.
+
+!TODO
 
 ### How to set up the HLS source code?
 
