@@ -97,9 +97,11 @@ cmsRun pset_SingleNeutrino_PU200_Phase2HLTTDRSummer20.py
 
 ### How to make private ntuples with CRAB3?
 
-If you already have your own CRAB3 setup, you can just use it. If you don't, this is my setup.
+If you already have your own CRAB3 setup, you can just use it. If you don't, you can find my setup in this repository:
 
-!TODO
+- <https://github.com/jiafulow/user-crab3/tree/L1MuonTrigger-P2_11_1_7>
+
+Please refer to `README.md` in the repo for details.
 
 ### How to set up the HLS source code?
 
