@@ -19,3 +19,12 @@ This website documents how to use and develop the **EMTF++ algorithm**. It consi
 ## Revision
 
 - 2021-11-04: Initial content.
+
+
+## Past Presentations
+
+- 2021-04-01: [First report on EMTF++ HLS implementation](https://indico.cern.ch/event/1023861/contributions/4298612/subcontributions/333167/attachments/2220089/3759718/2021-04-01_emtfpp_p2l1tm_update_v2.pdf)
+- 2021-06-17: [Update on EMTF++ HLS implementation](https://indico.cern.ch/event/1049784/contributions/4410771/subcontributions/342163/attachments/2266411/3848117/2021-06-17_emtfpp_p2l1tmu_update_v1.pdf)
+- 2021-09-30: [First report on EMTF++ emulator development](https://indico.cern.ch/event/1080544/contributions/4545051/subcontributions/351618/attachments/2320189/3950650/2021-09-30_emtfpp_emu_dev_v1.pdf)
+- 2021-10-07: [Update on EMTF++ emulator development](https://indico.cern.ch/event/1084984/contributions/4561785/subcontributions/352762/attachments/2324485/3958988/2021-10-07_emtfpp_emu_dev_v1.pdf)
+- 2021-11-11: [Update on EMTF++ emulator development](https://indico.cern.ch/event/1095694/contributions/4608837/subcontributions/356759/attachments/2343641/3995923/2021-11-11_emtfpp_emu_dev_v1.pdf)

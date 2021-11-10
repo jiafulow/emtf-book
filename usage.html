@@ -347,12 +347,43 @@ cmsRun pset_SingleNeutrino_PU200_Phase2HLTTDRSummer20.py
 </div>
 <div class="section" id="how-to-set-up-the-hls-source-code">
 <h3>How to set up the HLS source code?<a class="headerlink" href="#how-to-set-up-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended that you separate the HLS environment from the CMSSW environment. It is also recommended that you use the specific version of Vivado HLS <code class="docutils literal notranslate"><span class="pre">v2020.1</span></code>.</p>
+</div>
+<p>Set up instructions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># The following line depends on where Vivado HLS was installed.</span>
+<span class="nb">source</span> /data/Xilinx/Vivado/2020.1/settings64.sh
+<span class="c1"># Checkout repo</span>
+git clone git@github.com:jiafulow/emtf-hlslib.git
+<span class="nb">cd</span> emtf-hlslib/
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-run-the-hls-source-code">
 <h3>How to run the HLS source code?<a class="headerlink" href="#how-to-run-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
+<p>The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vivado_hls -f run_hls_xcvu13p.tcl
+</pre></div>
+</div>
+<p>For KU15P, do</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vivado_hls -f run_hls_xcku15p.tcl
+</pre></div>
+</div>
+<p>To use the Vivado HLS tool in GUI mode, simply call <code class="docutils literal notranslate"><span class="pre">vivado_hls</span></code>.</p>
 </div>
 <div class="section" id="how-to-import-the-hls-source-code-into-the-emulator">
 <h3>How to import the HLS source code into the emulator?<a class="headerlink" href="#how-to-import-the-hls-source-code-into-the-emulator" title="Permalink to this headline">¶</a></h3>
+<p>To import the HLS source code into the emulator, do:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> scripts/cmssw/
+<span class="c1"># The following Python script will create a directory called &#39;emtf_hlslib&#39;</span>
+<span class="c1"># which contains rewritten HLS source code.</span>
+python3 rewrite.py
+<span class="c1"># Replace &#39;$CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/emtf_hlslib/&#39;</span>
+rm -rf <span class="nv">$CMSSW_BASE</span>/src/L1Trigger/Phase2L1EMTF/src/emtf_hlslib/
+mv emtf_hlslib <span class="nv">$CMSSW_BASE</span>/src/L1Trigger/Phase2L1EMTF/src/
+</pre></div>
+</div>
 </div>
 </div>
 </div>

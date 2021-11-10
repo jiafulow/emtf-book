@@ -105,6 +105,47 @@ Please refer to `README.md` in the repo for details.
 
 ### How to set up the HLS source code?
 
+``` {note}
+It is recommended that you separate the HLS environment from the CMSSW environment. It is also recommended that you use the specific version of Vivado HLS `v2020.1`.
+```
+
+Set up instructions:
+
+``` bash
+# The following line depends on where Vivado HLS was installed.
+source /data/Xilinx/Vivado/2020.1/settings64.sh
+# Checkout repo
+git clone git@github.com:jiafulow/emtf-hlslib.git
+cd emtf-hlslib/
+```
+
 ### How to run the HLS source code?
 
+The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do
+
+``` bash
+vivado_hls -f run_hls_xcvu13p.tcl
+```
+
+For KU15P, do
+
+``` bash
+vivado_hls -f run_hls_xcku15p.tcl
+```
+
+To use the Vivado HLS tool in GUI mode, simply call `vivado_hls`.
+
 ### How to import the HLS source code into the emulator?
+
+To import the HLS source code into the emulator, do:
+
+``` bash
+cd scripts/cmssw/
+# The following Python script will create a directory called 'emtf_hlslib'
+# which contains rewritten HLS source code.
+python3 rewrite.py
+# Replace '$CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/emtf_hlslib/'
+rm -rf $CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/emtf_hlslib/
+mv emtf_hlslib $CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/
+```
+
