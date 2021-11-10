@@ -362,14 +362,15 @@ git clone git@github.com:jiafulow/emtf-hlslib.git
 </div>
 <div class="section" id="how-to-run-the-hls-source-code">
 <h3>How to run the HLS source code?<a class="headerlink" href="#how-to-run-the-hls-source-code" title="Permalink to this headline">¶</a></h3>
-<p>The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do</p>
+<p>The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vivado_hls -f run_hls_xcvu13p.tcl
 </pre></div>
 </div>
-<p>For KU15P, do</p>
+<p>For KU15P, do:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vivado_hls -f run_hls_xcku15p.tcl
 </pre></div>
 </div>
+<p>By default, the project area is reset and the following steps are executed: C Simulation, C Synthesis, C/RTL Co-simulation, RTL Synthesis and Implementation.</p>
 <p>To use the Vivado HLS tool in GUI mode, simply call <code class="docutils literal notranslate"><span class="pre">vivado_hls</span></code>.</p>
 </div>
 <div class="section" id="how-to-import-the-hls-source-code-into-the-emulator">

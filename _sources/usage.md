@@ -121,17 +121,19 @@ cd emtf-hlslib/
 
 ### How to run the HLS source code?
 
-The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do
+The Vivado HLS tool can be called by using Tcl scripts. For VU13P, do:
 
 ``` bash
 vivado_hls -f run_hls_xcvu13p.tcl
 ```
 
-For KU15P, do
+For KU15P, do:
 
 ``` bash
 vivado_hls -f run_hls_xcku15p.tcl
 ```
+
+By default, the project area is reset and the following steps are executed: C Simulation, C Synthesis, C/RTL Co-simulation, RTL Synthesis and Implementation.
 
 To use the Vivado HLS tool in GUI mode, simply call `vivado_hls`.
 
