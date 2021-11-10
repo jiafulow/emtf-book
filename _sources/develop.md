@@ -2,6 +2,8 @@
 
 ## Overview
 
+This section describes how to generate the patterns, how to train the NN, and how to include the updates into the HLS source code and the emulator code. It also describes how to make the rate and efficiency plots.
+
 ## How-to Guide
 
 ### How to convert the ROOT ntuples into NumPy arrays?
