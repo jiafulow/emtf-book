@@ -12,6 +12,18 @@ Note that the HLS FW is incomplete at the moment. Notably, it is missing: the in
 
 **Private ntuples** &mdash; Various studies are done with private ntuples. Basically, a "ntupler" is used to extract the EMTF++ emulator output and store them in a simple ROOT TTree. Doing this will save a lot of disk space as well as CPU time (as I/O is reduced).
 
+If you are not familiar with ROOT, please look at:
+
+- [Get Started - ROOT](https://root.cern/get_started/)
+
+If you are not familiar with CMSSW, please look at:
+
+- [The CMS Offline WorkBook](https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook)
+
+If you are not familiar with Vivado HLS, please look at:
+
+- [Vivado Design Suite User Guide: High-Level Synthesis (v2020.1)](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug902-vivado-high-level-synthesis.pdf)
+
 
 ## How-to Guide
 

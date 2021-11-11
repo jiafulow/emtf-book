@@ -262,6 +262,18 @@
 <p><strong>Modifying HLS source code</strong> — HLS stuff is being developed in a separate repository outside of CMSSW. It follows the setup of a Xilinx Vivado HLS project, which allows one to perform FW synthesis and implementation. Once satisfied, the HLS source code is then imported into the emulator.</p>
 <p>Note that the HLS FW is incomplete at the moment. Notably, it is missing: the interface to the trigger primitives, the coordinate conversion, the displaced muon capabilities, and the demands from the downstream (i.e. GMT).</p>
 <p><strong>Private ntuples</strong> — Various studies are done with private ntuples. Basically, a “ntupler” is used to extract the EMTF++ emulator output and store them in a simple ROOT TTree. Doing this will save a lot of disk space as well as CPU time (as I/O is reduced).</p>
+<p>If you are not familiar with ROOT, please look at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://root.cern/get_started/">Get Started - ROOT</a></p></li>
+</ul>
+<p>If you are not familiar with CMSSW, please look at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://twiki.cern.ch/twiki/bin/view/CMSPublic/WorkBook">The CMS Offline WorkBook</a></p></li>
+</ul>
+<p>If you are not familiar with Vivado HLS, please look at:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug902-vivado-high-level-synthesis.pdf">Vivado Design Suite User Guide: High-Level Synthesis (v2020.1)</a></p></li>
+</ul>
 </div>
 <div class="section" id="how-to-guide">
 <h2>How-to Guide<a class="headerlink" href="#how-to-guide" title="Permalink to this headline">¶</a></h2>
