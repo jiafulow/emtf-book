@@ -117,9 +117,9 @@ Please refer to `README.md` in the repo for details.
 
 ### How to set up the HLS source code?
 
-``` {note}
+::: {note}
 It is recommended that you separate the HLS environment from the CMSSW environment. It is also recommended that you use the specific version of Vivado HLS `v2020.1`.
-```
+:::
 
 Set up instructions:
 

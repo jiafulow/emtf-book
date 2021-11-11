@@ -12,6 +12,7 @@
 
     /* colors */
     --pst-color-primary: 0, 60, 102;
+    --pst-color-admonition-note: 87, 154, 202;
     --pst-color-h1: var(--pst-color-primary);
     --pst-color-h2: var(--pst-color-primary);
     --pst-color-h3: var(--pst-color-primary);
