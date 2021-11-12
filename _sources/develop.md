@@ -26,7 +26,7 @@ If you are not familiar with TensorFlow, please look at:
 
 ### How to convert the private ntuples into NumPy arrays?
 
-Before doing any of the tasks here, the private ntuples need to be converted into pure Python objects &mdash; NumPy arrays. This step has dependency on ROOT, and thus CMSSW; but after the conversion, you will no longer have dependency on ROOT and CMSSW.
+Before doing any of the tasks here, the private ntuples need to be converted into NumPy arrays. This step has dependency on ROOT, and thus CMSSW; but after the conversion, you will no longer have dependency on ROOT and CMSSW.
 
 First, follow the set up instructions as used for [How to make private ntuples](usage.html#how-to-make-private-ntuples).
 
@@ -36,9 +36,9 @@ Then, change directory:
 cd $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/workspace/
 ```
 
-The location of the ntuples are stated in the script `emtf_ntuples.py`. Look at `SingleMuon` for particle gun ntuples, and `SingleNeutrinoPU200` for neutrino PU200 ntuples. You should modify them if necessary.
+The location of the ntuples are hardcoded in the script `emtf_ntuples.py`. Look at `SingleMuon` for particle gun ntuples, and `SingleNeutrinoPU200` for neutrino PU200 ntuples. You should modify them if necessary.
 
-Then, in the script `ristretto.py`, select `analysis = 'signal'` if you want to run on particle gun ntuples (default), and select `analysis = 'bkgnd'` if you want to run on neutrino PU200 ntuples. Then, run it:
+Then, in the script `ristretto.py`, select `analysis = 'signal'` if you want to run on particle gun ntuples (default), and select `analysis = 'bkgnd'` if you want to run on neutrino PU200 ntuples. Then, run the script:
 
 ``` bash
 python ristretto.py
@@ -46,10 +46,17 @@ python ristretto.py
 
 ### How to set up the Conda environment?
 
+For the rest of the tasks, it's best to avoid any CMSSW dependency. So, a Conda environment is used.
+
+Once you have Conda installed, do the following to create a Conda environment:
+
+!TODO
+
+
 ### How to generate the patterns?
 
 ### How to train the NN?
 
-### How to put the patterns and the NN into the HLS source code and the emulator code?
+### How to import the patterns and the NN into the HLS source code and the emulator code?
 
 ### How to make rate and efficiency plots?

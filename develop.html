@@ -224,8 +224,8 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-put-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
-     How to put the patterns and the NN into the HLS source code and the emulator code?
+    <a class="reference internal nav-link" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
+     How to import the patterns and the NN into the HLS source code and the emulator code?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -273,20 +273,23 @@
 <h2>How-to Guide<a class="headerlink" href="#how-to-guide" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="how-to-convert-the-private-ntuples-into-numpy-arrays">
 <h3>How to convert the private ntuples into NumPy arrays?<a class="headerlink" href="#how-to-convert-the-private-ntuples-into-numpy-arrays" title="Permalink to this headline">¶</a></h3>
-<p>Before doing any of the tasks here, the private ntuples need to be converted into pure Python objects — NumPy arrays. This step has dependency on ROOT, and thus CMSSW; but after the conversion, you will no longer have dependency on ROOT and CMSSW.</p>
+<p>Before doing any of the tasks here, the private ntuples need to be converted into NumPy arrays. This step has dependency on ROOT, and thus CMSSW; but after the conversion, you will no longer have dependency on ROOT and CMSSW.</p>
 <p>First, follow the set up instructions as used for <a class="reference external" href="usage.html#how-to-make-private-ntuples">How to make private ntuples</a>.</p>
 <p>Then, change directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$CMSSW_BASE</span>/src/L1TMuonSimulations/Analyzers/workspace/
 </pre></div>
 </div>
-<p>The location of the ntuples are stated in the script <code class="docutils literal notranslate"><span class="pre">emtf_ntuples.py</span></code>. Look at <code class="docutils literal notranslate"><span class="pre">SingleMuon</span></code> for particle gun ntuples, and <code class="docutils literal notranslate"><span class="pre">SingleNeutrinoPU200</span></code> for neutrino PU200 ntuples. You should modify them if necessary.</p>
-<p>Then, in the script <code class="docutils literal notranslate"><span class="pre">ristretto.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'signal'</span></code> if you want to run on particle gun ntuples (default), and select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'bkgnd'</span></code> if you want to run on neutrino PU200 ntuples. Then, run it:</p>
+<p>The location of the ntuples are hardcoded in the script <code class="docutils literal notranslate"><span class="pre">emtf_ntuples.py</span></code>. Look at <code class="docutils literal notranslate"><span class="pre">SingleMuon</span></code> for particle gun ntuples, and <code class="docutils literal notranslate"><span class="pre">SingleNeutrinoPU200</span></code> for neutrino PU200 ntuples. You should modify them if necessary.</p>
+<p>Then, in the script <code class="docutils literal notranslate"><span class="pre">ristretto.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'signal'</span></code> if you want to run on particle gun ntuples (default), and select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'bkgnd'</span></code> if you want to run on neutrino PU200 ntuples. Then, run the script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ristretto.py
 </pre></div>
 </div>
 </div>
 <div class="section" id="how-to-set-up-the-conda-environment">
 <h3>How to set up the Conda environment?<a class="headerlink" href="#how-to-set-up-the-conda-environment" title="Permalink to this headline">¶</a></h3>
+<p>For the rest of the tasks, it’s best to avoid any CMSSW dependency. So, a Conda environment is used.</p>
+<p>Once you have Conda installed, do the following to create a Conda environment:</p>
+<p>!TODO</p>
 </div>
 <div class="section" id="how-to-generate-the-patterns">
 <h3>How to generate the patterns?<a class="headerlink" href="#how-to-generate-the-patterns" title="Permalink to this headline">¶</a></h3>
@@ -294,8 +297,8 @@
 <div class="section" id="how-to-train-the-nn">
 <h3>How to train the NN?<a class="headerlink" href="#how-to-train-the-nn" title="Permalink to this headline">¶</a></h3>
 </div>
-<div class="section" id="how-to-put-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
-<h3>How to put the patterns and the NN into the HLS source code and the emulator code?<a class="headerlink" href="#how-to-put-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
+<h3>How to import the patterns and the NN into the HLS source code and the emulator code?<a class="headerlink" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="how-to-make-rate-and-efficiency-plots">
 <h3>How to make rate and efficiency plots?<a class="headerlink" href="#how-to-make-rate-and-efficiency-plots" title="Permalink to this headline">¶</a></h3>
