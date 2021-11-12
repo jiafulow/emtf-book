@@ -30,8 +30,19 @@ Before doing any of the tasks here, the private ntuples need to be converted int
 
 First, follow the set up instructions as used for [How to make private ntuples](usage.html#how-to-make-private-ntuples).
 
-!TODO
+Then, change directory:
 
+``` bash
+cd $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/workspace/
+```
+
+The location of the ntuples are stated in the script `emtf_ntuples.py`. Look at `SingleMuon` for particle gun ntuples, and `SingleNeutrinoPU200` for neutrino PU200 ntuples. You should modify them if necessary.
+
+Then, in the script `ristretto.py`, select `analysis = 'signal'` if you want to run on particle gun ntuples (default), and select `analysis = 'bkgnd'` if you want to run on neutrino PU200 ntuples. Then, run it:
+
+``` bash
+python ristretto.py
+```
 
 ### How to set up the Conda environment?
 

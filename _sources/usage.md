@@ -100,7 +100,7 @@ To generate single muon particle gun ntuples (using the parameters from the `Pha
 cmsRun pset_SingleMuon_PosEnd_2GeV_Phase2HLTTDRSummer20.py
 ```
 
-To generate single neutrino PU200 ntuples (also `Phase2HLTTDRSummer20`):
+To generate neutrino PU200 ntuples (also `Phase2HLTTDRSummer20`):
 
 ``` bash
 # You should be in $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/test/

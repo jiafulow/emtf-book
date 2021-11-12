@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Develop &#8212; emtf-book</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -53,7 +53,10 @@
     <link rel="next" title="Documentation" href="docs.html" />
     <link rel="prev" title="Usage" href="usage.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -272,7 +275,15 @@
 <h3>How to convert the private ntuples into NumPy arrays?<a class="headerlink" href="#how-to-convert-the-private-ntuples-into-numpy-arrays" title="Permalink to this headline">¶</a></h3>
 <p>Before doing any of the tasks here, the private ntuples need to be converted into pure Python objects — NumPy arrays. This step has dependency on ROOT, and thus CMSSW; but after the conversion, you will no longer have dependency on ROOT and CMSSW.</p>
 <p>First, follow the set up instructions as used for <a class="reference external" href="usage.html#how-to-make-private-ntuples">How to make private ntuples</a>.</p>
-<p>!TODO</p>
+<p>Then, change directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> <span class="nv">$CMSSW_BASE</span>/src/L1TMuonSimulations/Analyzers/workspace/
+</pre></div>
+</div>
+<p>The location of the ntuples are stated in the script <code class="docutils literal notranslate"><span class="pre">emtf_ntuples.py</span></code>. Look at <code class="docutils literal notranslate"><span class="pre">SingleMuon</span></code> for particle gun ntuples, and <code class="docutils literal notranslate"><span class="pre">SingleNeutrinoPU200</span></code> for neutrino PU200 ntuples. You should modify them if necessary.</p>
+<p>Then, in the script <code class="docutils literal notranslate"><span class="pre">ristretto.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'signal'</span></code> if you want to run on particle gun ntuples (default), and select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'bkgnd'</span></code> if you want to run on neutrino PU200 ntuples. Then, run it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python ristretto.py
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-set-up-the-conda-environment">
 <h3>How to set up the Conda environment?<a class="headerlink" href="#how-to-set-up-the-conda-environment" title="Permalink to this headline">¶</a></h3>
@@ -315,31 +326,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="usage.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Usage</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="usage.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Usage</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="docs.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Documentation</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="docs.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Documentation</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -360,8 +362,7 @@
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
