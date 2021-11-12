@@ -90,6 +90,14 @@ pip install -U tensorflow=2.6.0
 
 For the sake of consistency, it is recommeded to stay with TensorFlow `v2.6.0` rather than using the latest version.
 
+Finally, install this EMTF++ Python package (unpublished):
+
+``` bash
+git clone git@github.com:jiafulow/emtf-nnet.git
+cd emtf-nnet
+pip install -U -e .
+```
+
 ### How to get the Jupyter notebooks?
 
 The notebooks are stored in this repository:
@@ -115,6 +123,17 @@ The first notebook will produce `nnet_model.json` and `nnet_model_weights.h5`; t
 
 ### How to import the patterns and the NN into the HLS source code and the emulator code?
 
-In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`.
+In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`. Make some edits:
+
+- Set the variables `signal_fname` and `bkgnd_fname` in these notebooks to be the locations of the NumPy arrays (converted from the private ntuples).
+
+!TODO
 
 ### How to make rate and efficiency plots?
+
+This workflow is not very well optimizied at the moment. It consists of multiple steps:
+
+- If the patterns or the NN are updated, the emulator code should be updated and re-compiled.
+- Run the emulator and make the private ntuples for neutrino PU200 dataset (for rate estimation) and muon PU200 dataset (for efficiency estimation).
+
+!TODO

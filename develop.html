@@ -332,6 +332,12 @@ pip install -U <span class="nv">tensorflow</span><span class="o">=</span><span c
 </pre></div>
 </div>
 <p>For the sake of consistency, it is recommeded to stay with TensorFlow <code class="docutils literal notranslate"><span class="pre">v2.6.0</span></code> rather than using the latest version.</p>
+<p>Finally, install this EMTF++ Python package (unpublished):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:jiafulow/emtf-nnet.git
+<span class="nb">cd</span> emtf-nnet
+pip install -U -e .
+</pre></div>
+</div>
 </div>
 <div class="section" id="how-to-get-the-jupyter-notebooks">
 <h3>How to get the Jupyter notebooks?<a class="headerlink" href="#how-to-get-the-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
@@ -355,10 +361,20 @@ It will produce <code class="docutils literal notranslate"><span class="pre">fea
 </div>
 <div class="section" id="how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
 <h3>How to import the patterns and the NN into the HLS source code and the emulator code?<a class="headerlink" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code" title="Permalink to this headline">¶</a></h3>
-<p>In the Notebooks directory, execute the notebook: <code class="docutils literal notranslate"><span class="pre">20-features-quick.ipynb</span></code>.</p>
+<p>In the Notebooks directory, execute the notebook: <code class="docutils literal notranslate"><span class="pre">20-features-quick.ipynb</span></code>. Make some edits:</p>
+<ul class="simple">
+<li><p>Set the variables <code class="docutils literal notranslate"><span class="pre">signal_fname</span></code> and <code class="docutils literal notranslate"><span class="pre">bkgnd_fname</span></code> in these notebooks to be the locations of the NumPy arrays (converted from the private ntuples).</p></li>
+</ul>
+<p>!TODO</p>
 </div>
 <div class="section" id="how-to-make-rate-and-efficiency-plots">
 <h3>How to make rate and efficiency plots?<a class="headerlink" href="#how-to-make-rate-and-efficiency-plots" title="Permalink to this headline">¶</a></h3>
+<p>This workflow is not very well optimizied at the moment. It consists of multiple steps:</p>
+<ul class="simple">
+<li><p>If the patterns or the NN are updated, the emulator code should be updated and re-compiled.</p></li>
+<li><p>Run the emulator and make the private ntuples for neutrino PU200 dataset (for rate estimation) and muon PU200 dataset (for efficiency estimation).</p></li>
+</ul>
+<p>!TODO</p>
 </div>
 </div>
 </div>
