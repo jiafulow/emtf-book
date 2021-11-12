@@ -46,12 +46,48 @@ python ristretto.py
 
 ### How to set up the Conda environment?
 
-For the rest of the tasks, it's best to avoid any CMSSW dependency. So, a Conda environment is used.
+For the rest of the tasks, it's best to avoid any CMSSW dependency. A Conda environment is used instead. See [Getting started with conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to figure out how to install Conda.
 
-Once you have Conda installed, do the following to create a Conda environment:
+First, create the following YAML file `conda-tf-environment.yml`:
 
-!TODO
+::: {dropdown} `conda-tf-environment.yml`
 
+``` yaml
+name: tf
+channels:
+  - defaults
+dependencies:
+  - more-itertools
+  - jupyterlab
+  - jupyter
+  - seaborn
+  - python=3.9
+  - numpy
+  - pyyaml
+  - matplotlib
+  - scipy
+  - h5py
+  - dask
+  - pandas
+```
+
+:::
+
+Then, create the Conda environment with the selected Python packages using the YAML file:
+
+``` bash
+conda env create --file conda-tf-environment.yml
+```
+
+Then, install TensorFlow via pip:
+
+``` bash
+conda activate tf
+pip install -U pip
+pip install -U tensorflow=2.6.0
+```
+
+For the sake of consistency, it is recommeded to stay with TensorFlow `v2.6.0` rather than using the latest version.
 
 ### How to generate the patterns?
 

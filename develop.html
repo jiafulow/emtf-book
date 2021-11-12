@@ -287,9 +287,45 @@
 </div>
 <div class="section" id="how-to-set-up-the-conda-environment">
 <h3>How to set up the Conda environment?<a class="headerlink" href="#how-to-set-up-the-conda-environment" title="Permalink to this headline">¶</a></h3>
-<p>For the rest of the tasks, it’s best to avoid any CMSSW dependency. So, a Conda environment is used.</p>
-<p>Once you have Conda installed, do the following to create a Conda environment:</p>
-<p>!TODO</p>
+<p>For the rest of the tasks, it’s best to avoid any CMSSW dependency. A Conda environment is used instead. See <a class="reference external" href="https://conda.io/projects/conda/en/latest/user-guide/getting-started.html">Getting started with conda</a> to figure out how to install Conda.</p>
+<p>First, create the following YAML file <code class="docutils literal notranslate"><span class="pre">conda-tf-environment.yml</span></code>:</p>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+<code class="docutils literal notranslate"><span class="pre">conda-tf-environment.yml</span></code><div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tf</span>
+<span class="nt">channels</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span>
+<span class="nt">dependencies</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">more-itertools</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyterlab</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">jupyter</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">seaborn</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python=3.9</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">numpy</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pyyaml</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">matplotlib</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">scipy</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">h5py</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">dask</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pandas</span>
+</pre></div>
+</div>
+</div>
+</details><p>Then, create the Conda environment with the selected Python packages using the YAML file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create --file conda-tf-environment.yml
+</pre></div>
+</div>
+<p>Then, install TensorFlow via pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate tf
+pip install -U pip
+pip install -U <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.6.0
+</pre></div>
+</div>
+<p>For the sake of consistency, it is recommeded to stay with TensorFlow <code class="docutils literal notranslate"><span class="pre">v2.6.0</span></code> rather than using the latest version.</p>
 </div>
 <div class="section" id="how-to-generate-the-patterns">
 <h3>How to generate the patterns?<a class="headerlink" href="#how-to-generate-the-patterns" title="Permalink to this headline">¶</a></h3>
