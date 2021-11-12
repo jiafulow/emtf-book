@@ -100,18 +100,21 @@ Please refer to `README.md` in the repo for details.
 
 ### How to generate the patterns?
 
-In the Notebooks directory, execute the notebooks: `10-patterns-zone0.ipynb`, `11-patterns-zone1.ipynb`, and `12-patterns-zone2.ipynb`.
+In the Notebooks directory, execute the notebooks: `10-patterns-zone0.ipynb`, `11-patterns-zone1.ipynb`, and `12-patterns-zone2.ipynb`. Set the variables `signal_fname` and `bkgnd_fname` in these notebooks to be the locations of the NumPy arrays (converted from the private ntuples).
 
 They will produce: `patterns_zone0.npz`, `patterns_zone1.npz`, and `patterns_zone2.npz`, respectively.
 
 ### How to train the NN?
 
-In the Notebooks directory, execute the notebooks: `21-features-full.ipynb`. It will produce `features.h5`, which is the input to the next step.
+In the Notebooks directory, execute the notebooks: `21-features-full.ipynb`. Set the variables `signal_fname` and `bkgnd_fname` in these notebooks to be the locations of the NumPy arrays (converted from the private ntuples).
+It will produce `features.h5`, which is used as input to the next step.
 
-Then, execute the notebooks: `22-predictions.ipynb` and `23-predictions-quant.ipynb` (remember to set `features_fname` to be the location of the output file from the previous step).
+Then, execute the notebooks: `22-predictions.ipynb` and `23-predictions-quant.ipynb`. Set the variable `features_fname` in these notebooks to be the location of the output file from the previous step. The difference between the two notebooks is that the first notebook does not apply NN quantization, while the second notebook does.
 
-!TODO
+The first notebook will produce `nnet_model.json` and `nnet_model_weights.h5`; the second notebook will produce `quant_nnet_model.json` and `quant_nnet_model_weights.h5`.
 
 ### How to import the patterns and the NN into the HLS source code and the emulator code?
+
+In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`.
 
 ### How to make rate and efficiency plots?
