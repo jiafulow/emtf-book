@@ -229,11 +229,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#how-to-create-firmware-test-bench-files">
-     How to create firmware test bench files?
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
      How to import the patterns and the NN into the HLS source code and the emulator code?
     </a>
@@ -348,12 +343,14 @@ pip install -U <span class="nv">tensorflow</span><span class="o">=</span><span c
 </div>
 <div class="section" id="how-to-generate-the-patterns">
 <h3>How to generate the patterns?<a class="headerlink" href="#how-to-generate-the-patterns" title="Permalink to this headline">¶</a></h3>
+<p>In the Notebooks directory, execute the notebooks: <code class="docutils literal notranslate"><span class="pre">10-patterns-zone0.ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">11-patterns-zone1.ipynb</span></code>, and <code class="docutils literal notranslate"><span class="pre">12-patterns-zone2.ipynb</span></code>.</p>
+<p>They will produce: <code class="docutils literal notranslate"><span class="pre">patterns_zone0.npz</span></code>, <code class="docutils literal notranslate"><span class="pre">patterns_zone1.npz</span></code>, and <code class="docutils literal notranslate"><span class="pre">patterns_zone2.npz</span></code>, respectively.</p>
 </div>
 <div class="section" id="how-to-train-the-nn">
 <h3>How to train the NN?<a class="headerlink" href="#how-to-train-the-nn" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="how-to-create-firmware-test-bench-files">
-<h3>How to create firmware test bench files?<a class="headerlink" href="#how-to-create-firmware-test-bench-files" title="Permalink to this headline">¶</a></h3>
+<p>In the Notebooks directory, execute the notebooks: <code class="docutils literal notranslate"><span class="pre">21-features-full.ipynb</span></code>. It will produce <code class="docutils literal notranslate"><span class="pre">features.h5</span></code>, which is the input to the next step.</p>
+<p>Then, execute the notebooks: <code class="docutils literal notranslate"><span class="pre">22-predictions.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">23-predictions-quant.ipynb</span></code> (remember to set <code class="docutils literal notranslate"><span class="pre">features_fname</span></code> to be the location of the output file from the previous step).</p>
+<p>!TODO</p>
 </div>
 <div class="section" id="how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
 <h3>How to import the patterns and the NN into the HLS source code and the emulator code?<a class="headerlink" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code" title="Permalink to this headline">¶</a></h3>

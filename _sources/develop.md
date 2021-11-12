@@ -100,9 +100,17 @@ Please refer to `README.md` in the repo for details.
 
 ### How to generate the patterns?
 
+In the Notebooks directory, execute the notebooks: `10-patterns-zone0.ipynb`, `11-patterns-zone1.ipynb`, and `12-patterns-zone2.ipynb`.
+
+They will produce: `patterns_zone0.npz`, `patterns_zone1.npz`, and `patterns_zone2.npz`, respectively.
+
 ### How to train the NN?
 
-### How to create firmware test bench files?
+In the Notebooks directory, execute the notebooks: `21-features-full.ipynb`. It will produce `features.h5`, which is the input to the next step.
+
+Then, execute the notebooks: `22-predictions.ipynb` and `23-predictions-quant.ipynb` (remember to set `features_fname` to be the location of the output file from the previous step).
+
+!TODO
 
 ### How to import the patterns and the NN into the HLS source code and the emulator code?
 
