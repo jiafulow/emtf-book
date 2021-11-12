@@ -4,7 +4,7 @@
 
 This section describes how to generate the patterns, how to train the NN, and how to include the updates into the HLS source code and the emulator code. It also describes how to make the rate and efficiency plots.
 
-Most of the tasks here are done with Python + Jupyter. A Conda environment is used to manage the Python packages. NumPy is used extensively. The ML framework of choice is TensorFlow.
+Most of the tasks here are done with Python + Jupyter. A Conda environment is used to manage the Python packages. NumPy is used extensively. The ML framework of choice is TensorFlow. The tasks are executed by running the Jupyter notebooks.
 
 If you are not familiar with Jupyter, please look at:
 
@@ -50,7 +50,7 @@ For the rest of the tasks, it's best to avoid any CMSSW dependency. A Conda envi
 
 First, create the following YAML file `conda-tf-environment.yml`:
 
-::: {dropdown} `conda-tf-environment.yml`
+::: {dropdown} Content of `conda-tf-environment.yml`
 
 ``` yaml
 name: tf
@@ -76,6 +76,7 @@ dependencies:
 Then, create the Conda environment with the selected Python packages using the YAML file:
 
 ``` bash
+conda update --yes -n base conda
 conda env create --file conda-tf-environment.yml
 ```
 
@@ -89,9 +90,19 @@ pip install -U tensorflow=2.6.0
 
 For the sake of consistency, it is recommeded to stay with TensorFlow `v2.6.0` rather than using the latest version.
 
+### How to get the Jupyter notebooks?
+
+The notebooks are stored in this repository:
+
+- <https://github.com/jiafulow/user-notebooks/tree/L1MuonTrigger-P2_11_1_7>
+
+Please refer to `README.md` in the repo for details.
+
 ### How to generate the patterns?
 
 ### How to train the NN?
+
+### How to create firmware test bench files?
 
 ### How to import the patterns and the NN into the HLS source code and the emulator code?
 

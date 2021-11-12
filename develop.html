@@ -214,6 +214,11 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-get-the-jupyter-notebooks">
+     How to get the Jupyter notebooks?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-generate-the-patterns">
      How to generate the patterns?
     </a>
@@ -221,6 +226,11 @@
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#how-to-train-the-nn">
      How to train the NN?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#how-to-create-firmware-test-bench-files">
+     How to create firmware test bench files?
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -251,7 +261,7 @@
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p>This section describes how to generate the patterns, how to train the NN, and how to include the updates into the HLS source code and the emulator code. It also describes how to make the rate and efficiency plots.</p>
-<p>Most of the tasks here are done with Python + Jupyter. A Conda environment is used to manage the Python packages. NumPy is used extensively. The ML framework of choice is TensorFlow.</p>
+<p>Most of the tasks here are done with Python + Jupyter. A Conda environment is used to manage the Python packages. NumPy is used extensively. The ML framework of choice is TensorFlow. The tasks are executed by running the Jupyter notebooks.</p>
 <p>If you are not familiar with Jupyter, please look at:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jupyter.readthedocs.io/en/latest/content-quickstart.html">Get Started - Jupyter Documentation</a></p></li>
@@ -291,7 +301,7 @@
 <p>First, create the following YAML file <code class="docutils literal notranslate"><span class="pre">conda-tf-environment.yml</span></code>:</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
-<code class="docutils literal notranslate"><span class="pre">conda-tf-environment.yml</span></code><div class="summary-down docutils">
+Content of <code class="docutils literal notranslate"><span class="pre">conda-tf-environment.yml</span></code><div class="summary-down docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
 <div class="summary-up docutils">
 <svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
@@ -316,7 +326,8 @@
 </div>
 </div>
 </details><p>Then, create the Conda environment with the selected Python packages using the YAML file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda env create --file conda-tf-environment.yml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update --yes -n base conda
+conda env create --file conda-tf-environment.yml
 </pre></div>
 </div>
 <p>Then, install TensorFlow via pip:</p>
@@ -327,11 +338,22 @@ pip install -U <span class="nv">tensorflow</span><span class="o">=</span><span c
 </div>
 <p>For the sake of consistency, it is recommeded to stay with TensorFlow <code class="docutils literal notranslate"><span class="pre">v2.6.0</span></code> rather than using the latest version.</p>
 </div>
+<div class="section" id="how-to-get-the-jupyter-notebooks">
+<h3>How to get the Jupyter notebooks?<a class="headerlink" href="#how-to-get-the-jupyter-notebooks" title="Permalink to this headline">¶</a></h3>
+<p>The notebooks are stored in this repository:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/jiafulow/user-notebooks/tree/L1MuonTrigger-P2_11_1_7">https://github.com/jiafulow/user-notebooks/tree/L1MuonTrigger-P2_11_1_7</a></p></li>
+</ul>
+<p>Please refer to <code class="docutils literal notranslate"><span class="pre">README.md</span></code> in the repo for details.</p>
+</div>
 <div class="section" id="how-to-generate-the-patterns">
 <h3>How to generate the patterns?<a class="headerlink" href="#how-to-generate-the-patterns" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="how-to-train-the-nn">
 <h3>How to train the NN?<a class="headerlink" href="#how-to-train-the-nn" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="how-to-create-firmware-test-bench-files">
+<h3>How to create firmware test bench files?<a class="headerlink" href="#how-to-create-firmware-test-bench-files" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code">
 <h3>How to import the patterns and the NN into the HLS source code and the emulator code?<a class="headerlink" href="#how-to-import-the-patterns-and-the-nn-into-the-hls-source-code-and-the-emulator-code" title="Permalink to this headline">¶</a></h3>
