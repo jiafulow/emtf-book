@@ -382,16 +382,17 @@ It will produce <code class="docutils literal notranslate"><span class="pre">fea
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;hls-working-area&gt;
 </pre></div>
 </div>
-<p>Then, copy the above files to the directory <code class="docutils literal notranslate"><span class="pre">scripts</span></code>, and use the following Python scripts:</p>
+<p>Then, copy the above files to the directory <code class="docutils literal notranslate"><span class="pre">scripts</span></code>. The scripts in this directory can be used to automatically write HLS source code and test bench files:</p>
 <ul class="simple">
 <li><p>Do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">make_pattern_bank.py</span></code> to generate the header file <code class="docutils literal notranslate"><span class="pre">pattern_bank.h</span></code>. Move it to the directory <code class="docutils literal notranslate"><span class="pre">firmware/emtf_hlslib/</span></code>.</p></li>
 <li><p>Do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">make_nnet_weights.py</span></code> to generate the header file <code class="docutils literal notranslate"><span class="pre">nnet_weights.h</span></code>. Move it to the directory <code class="docutils literal notranslate"><span class="pre">firmware/emtf_hlslib/</span></code>.</p></li>
 <li><p>Do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">make_testbench.py</span></code> to generate all the test bench files. Move them to the appropriate locations by following the instruction shown by the script.</p></li>
 </ul>
+<p>Check that the import is successful by running on of the Tcl scripts.</p>
 </div>
 <div class="section" id="how-to-make-rate-and-efficiency-plots">
 <h3>How to make rate and efficiency plots?<a class="headerlink" href="#how-to-make-rate-and-efficiency-plots" title="Permalink to this headline">¶</a></h3>
-<p>This workflow is kind of tedious at the moment.</p>
+<p>(This workflow is kind of tedious at the moment.)</p>
 <p>If the patterns or the NN are updated, the emulator code should be updated and re-compiled.</p>
 <p>Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See <a class="reference external" href="usage.html#how-to-make-private-ntuples">How to make private ntuples</a>.</p>
 <p>Convert the private ntuples into NumPy arrays by using the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>. In the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'rates'</span></code> if running on neutrino PU200 ntuples (default), or <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'effie'</span></code> if running on muon PU200 ntuples. Then, run it:</p>

@@ -146,16 +146,17 @@ Change directory to the working area for HLS source code. See [How to set up the
 cd <hls-working-area>
 ```
 
-Then, copy the above files to the directory `scripts`, and use the following Python scripts:
+Then, copy the above files to the directory `scripts`. The scripts in this directory can be used to automatically write HLS source code and test bench files:
 
 - Do `python make_pattern_bank.py` to generate the header file `pattern_bank.h`. Move it to the directory `firmware/emtf_hlslib/`.
 - Do `python make_nnet_weights.py` to generate the header file `nnet_weights.h`. Move it to the directory `firmware/emtf_hlslib/`.
 - Do `python make_testbench.py` to generate all the test bench files. Move them to the appropriate locations by following the instruction shown by the script.
 
+Check that the import is successful by running on of the Tcl scripts.
 
 ### How to make rate and efficiency plots?
 
-This workflow is kind of tedious at the moment.
+(This workflow is kind of tedious at the moment.)
 
 If the patterns or the NN are updated, the emulator code should be updated and re-compiled.
 
