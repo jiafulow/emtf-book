@@ -367,7 +367,7 @@ It will produce <code class="docutils literal notranslate"><span class="pre">fea
 <li><p>Set the variable <code class="docutils literal notranslate"><span class="pre">patterns_fname</span></code> to be the location of the patterns file (e.g. <code class="docutils literal notranslate"><span class="pre">patterns_zone0.npz</span></code>).</p></li>
 <li><p>Set the variable <code class="docutils literal notranslate"><span class="pre">nnet_model_fname</span></code> to be the location of the NN model file (e.g. <code class="docutils literal notranslate"><span class="pre">quant_nnet_model.json</span></code>)</p></li>
 </ul>
-<p>The notebook will produce:</p>
+<p>The notebook will produce several JSON files:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">pattern_bank.json</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">nnet_weights.json</span></code></p></li>
@@ -378,11 +378,11 @@ It will produce <code class="docutils literal notranslate"><span class="pre">fea
 <li><p><code class="docutils literal notranslate"><span class="pre">extracted_trainfilter_0.json</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">extracted_fullyconnect_0.json</span></code></p></li>
 </ul>
-<p>Then, change directory to the working area for HLS source code. See <a class="reference external" href="usage.html#how-to-set-up-the-hls-source-code">How to set up the HLS source code</a>.</p>
+<p>Change directory to the working area for HLS source code. See <a class="reference external" href="usage.html#how-to-set-up-the-hls-source-code">How to set up the HLS source code</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;hls-working-area&gt;
 </pre></div>
 </div>
-<p>Then, copy the above files to the directory <code class="docutils literal notranslate"><span class="pre">scripts</span></code>. Use the following Python scripts:</p>
+<p>Then, copy the above files to the directory <code class="docutils literal notranslate"><span class="pre">scripts</span></code>, and use the following Python scripts:</p>
 <ul class="simple">
 <li><p>Do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">make_pattern_bank.py</span></code> to generate the header file <code class="docutils literal notranslate"><span class="pre">pattern_bank.h</span></code>. Move it to the directory <code class="docutils literal notranslate"><span class="pre">firmware/emtf_hlslib/</span></code>.</p></li>
 <li><p>Do <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">make_nnet_weights.py</span></code> to generate the header file <code class="docutils literal notranslate"><span class="pre">nnet_weights.h</span></code>. Move it to the directory <code class="docutils literal notranslate"><span class="pre">firmware/emtf_hlslib/</span></code>.</p></li>
@@ -391,17 +391,14 @@ It will produce <code class="docutils literal notranslate"><span class="pre">fea
 </div>
 <div class="section" id="how-to-make-rate-and-efficiency-plots">
 <h3>How to make rate and efficiency plots?<a class="headerlink" href="#how-to-make-rate-and-efficiency-plots" title="Permalink to this headline">¶</a></h3>
-<p>This workflow is kind of tedious at the moment. It consists of multiple steps:</p>
-<ul>
-<li><p>If the patterns or the NN are updated, the emulator code should be updated and re-compiled.</p></li>
-<li><p>Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See <a class="reference external" href="usage.html#how-to-make-private-ntuples">How to make private ntuples</a>.</p></li>
-<li><p>Convert the private ntuples into NumPy arrays by using the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>. In the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'rates'</span></code> if running on neutrino PU200 ntuples (default), or <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'effie'</span></code> if running on muon PU200 ntuples. Then, run it:</p>
+<p>This workflow is kind of tedious at the moment.</p>
+<p>If the patterns or the NN are updated, the emulator code should be updated and re-compiled.</p>
+<p>Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See <a class="reference external" href="usage.html#how-to-make-private-ntuples">How to make private ntuples</a>.</p>
+<p>Convert the private ntuples into NumPy arrays by using the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>. In the script <code class="docutils literal notranslate"><span class="pre">espresso.py</span></code>, select <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'rates'</span></code> if running on neutrino PU200 ntuples (default), or <code class="docutils literal notranslate"><span class="pre">analysis</span> <span class="pre">=</span> <span class="pre">'effie'</span></code> if running on muon PU200 ntuples. Then, run it:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python espresso.py
 </pre></div>
 </div>
-</li>
-<li><p>Go to the Notebooks directory, execute the notebooks: <code class="docutils literal notranslate"><span class="pre">30-rates.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">31-efficiency.ipynb</span></code>. Set the variable <code class="docutils literal notranslate"><span class="pre">rates_fname</span></code> and <code class="docutils literal notranslate"><span class="pre">effie_fname</span></code> in these notebooks to be the location of the NumPy arrays.</p></li>
-</ul>
+<p>Go to the Notebooks directory, execute the notebooks: <code class="docutils literal notranslate"><span class="pre">30-rates.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">31-efficiency.ipynb</span></code>. Set the variable <code class="docutils literal notranslate"><span class="pre">rates_fname</span></code> and <code class="docutils literal notranslate"><span class="pre">effie_fname</span></code> in these notebooks to be the location of the NumPy arrays.</p>
 </div>
 </div>
 </div>

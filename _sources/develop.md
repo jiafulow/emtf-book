@@ -129,7 +129,7 @@ In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`. Mak
 - Set the variable `patterns_fname` to be the location of the patterns file (e.g. `patterns_zone0.npz`).
 - Set the variable `nnet_model_fname` to be the location of the NN model file (e.g. `quant_nnet_model.json`)
 
-The notebook will produce:
+The notebook will produce several JSON files:
 
 - `pattern_bank.json`
 - `nnet_weights.json`
@@ -140,30 +140,31 @@ The notebook will produce:
 - `extracted_trainfilter_0.json`
 - `extracted_fullyconnect_0.json`
 
-Then, change directory to the working area for HLS source code. See [How to set up the HLS source code](usage.html#how-to-set-up-the-hls-source-code).
+Change directory to the working area for HLS source code. See [How to set up the HLS source code](usage.html#how-to-set-up-the-hls-source-code).
 
 ``` bash
 cd <hls-working-area>
 ```
 
-Then, copy the above files to the directory `scripts`. Use the following Python scripts:
+Then, copy the above files to the directory `scripts`, and use the following Python scripts:
 
 - Do `python make_pattern_bank.py` to generate the header file `pattern_bank.h`. Move it to the directory `firmware/emtf_hlslib/`.
 - Do `python make_nnet_weights.py` to generate the header file `nnet_weights.h`. Move it to the directory `firmware/emtf_hlslib/`.
 - Do `python make_testbench.py` to generate all the test bench files. Move them to the appropriate locations by following the instruction shown by the script.
 
 
-
 ### How to make rate and efficiency plots?
 
-This workflow is kind of tedious at the moment. It consists of multiple steps:
+This workflow is kind of tedious at the moment.
 
-- If the patterns or the NN are updated, the emulator code should be updated and re-compiled.
-- Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See [How to make private ntuples](usage.html#how-to-make-private-ntuples).
-- Convert the private ntuples into NumPy arrays by using the script `espresso.py`. In the script `espresso.py`, select `analysis = 'rates'` if running on neutrino PU200 ntuples (default), or `analysis = 'effie'` if running on muon PU200 ntuples. Then, run it:
+If the patterns or the NN are updated, the emulator code should be updated and re-compiled.
 
-    ``` bash
-    python espresso.py
-    ```
+Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See [How to make private ntuples](usage.html#how-to-make-private-ntuples).
 
-- Go to the Notebooks directory, execute the notebooks: `30-rates.ipynb` and `31-efficiency.ipynb`. Set the variable `rates_fname` and `effie_fname` in these notebooks to be the location of the NumPy arrays.
+Convert the private ntuples into NumPy arrays by using the script `espresso.py`. In the script `espresso.py`, select `analysis = 'rates'` if running on neutrino PU200 ntuples (default), or `analysis = 'effie'` if running on muon PU200 ntuples. Then, run it:
+
+``` bash
+python espresso.py
+```
+
+Go to the Notebooks directory, execute the notebooks: `30-rates.ipynb` and `31-efficiency.ipynb`. Set the variable `rates_fname` and `effie_fname` in these notebooks to be the location of the NumPy arrays.
