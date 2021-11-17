@@ -38,7 +38,7 @@ cd $CMSSW_BASE/src/L1TMuonSimulations/Analyzers/workspace/
 
 The location of the ntuples are hardcoded in the script `emtf_ntuples.py`. Look at `SingleMuon` for particle gun ntuples, and `SingleNeutrinoPU200` for neutrino PU200 ntuples. You should modify them if necessary.
 
-Then, in the script `ristretto.py`, select `analysis = 'signal'` if you want to run on particle gun ntuples (default), and select `analysis = 'bkgnd'` if you want to run on neutrino PU200 ntuples. Then, run the script:
+Then, in the script `ristretto.py`, select `analysis = 'signal'` if running on particle gun ntuples (default), or select `analysis = 'bkgnd'` if running on neutrino PU200 ntuples. Then, run it:
 
 ``` bash
 python ristretto.py
@@ -123,17 +123,47 @@ The first notebook will produce `nnet_model.json` and `nnet_model_weights.h5`; t
 
 ### How to import the patterns and the NN into the HLS source code and the emulator code?
 
-In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`. Make some edits:
+In the Notebooks directory, execute the notebook: `20-features-quick.ipynb`. Make some edits in the notebook:
 
-- Set the variables `signal_fname` and `bkgnd_fname` in these notebooks to be the locations of the NumPy arrays (converted from the private ntuples).
+- Set the variables `signal_fname` and `bkgnd_fname` to be the locations of the NumPy arrays (converted from the private ntuples).
+- Set the variable `patterns_fname` to be the location of the patterns file (e.g. `patterns_zone0.npz`).
+- Set the variable `nnet_model_fname` to be the location of the NN model file (e.g. `quant_nnet_model.json`)
 
-!TODO
+The notebook will produce:
+
+- `pattern_bank.json`
+- `nnet_weights.json`
+- `x_test_sparse.json`
+- `extracted_zonemerging_0.json`
+- `extracted_trkbuilding_0.json`
+- `extracted_duperemoval_0.json`
+- `extracted_trainfilter_0.json`
+- `extracted_fullyconnect_0.json`
+
+Then, change directory to the working area for HLS source code. See [How to set up the HLS source code](usage.html#how-to-set-up-the-hls-source-code).
+
+``` bash
+cd <hls-working-area>
+```
+
+Then, copy the above files to the directory `scripts`. Use the following Python scripts:
+
+- Do `python make_pattern_bank.py` to generate the header file `pattern_bank.h`. Move it to the directory `firmware/emtf_hlslib/`.
+- Do `python make_nnet_weights.py` to generate the header file `nnet_weights.h`. Move it to the directory `firmware/emtf_hlslib/`.
+- Do `python make_testbench.py` to generate all the test bench files. Move them to the appropriate locations by following the instruction shown by the script.
+
+
 
 ### How to make rate and efficiency plots?
 
-This workflow is not very well optimizied at the moment. It consists of multiple steps:
+This workflow is kind of tedious at the moment. It consists of multiple steps:
 
 - If the patterns or the NN are updated, the emulator code should be updated and re-compiled.
-- Run the emulator and make the private ntuples for neutrino PU200 dataset (for rate estimation) and muon PU200 dataset (for efficiency estimation).
+- Run the emulator and make the private ntuples for neutrino PU200 dataset (used for rate estimation) and muon PU200 dataset (used for efficiency estimation). See [How to make private ntuples](usage.html#how-to-make-private-ntuples).
+- Convert the private ntuples into NumPy arrays by using the script `espresso.py`. In the script `espresso.py`, select `analysis = 'rates'` if running on neutrino PU200 ntuples (default), or `analysis = 'effie'` if running on muon PU200 ntuples. Then, run it:
 
-!TODO
+    ``` bash
+    python espresso.py
+    ```
+
+- Go to the Notebooks directory, execute the notebooks: `30-rates.ipynb` and `31-efficiency.ipynb`. Set the variable `rates_fname` and `effie_fname` in these notebooks to be the location of the NumPy arrays.
