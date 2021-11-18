@@ -213,13 +213,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#emtf-site-numbers">
-     EMTF++ ‘site’ numbers
+    <a class="reference internal nav-link" href="#emtf-host-numbers">
+     EMTF++ ‘host’ numbers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#emtf-host-numbers">
-     EMTF++ ‘host’ numbers
+    <a class="reference internal nav-link" href="#emtf-site-numbers">
+     EMTF++ ‘site’ numbers
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -403,56 +403,6 @@ Code snippet to create the LUT<div class="summary-down docutils">
 </div>
 </div>
 </details></div>
-<div class="section" id="emtf-site-numbers">
-<h3>EMTF++ ‘site’ numbers<a class="headerlink" href="#emtf-site-numbers" title="Permalink to this headline">¶</a></h3>
-<p>The EMTF++ site numbers are encoded using a LUT:</p>
-<ul class="simple">
-<li><p>Total: 12</p>
-<ul>
-<li><p>5 from CSC + 4 from RPC + 3 from GEM</p></li>
-</ul>
-</li>
-<li><p>Key: <code class="docutils literal notranslate"><span class="pre">(subsystem,</span> <span class="pre">station,</span> <span class="pre">ring)</span></code></p></li>
-<li><p>Mapped: <code class="docutils literal notranslate"><span class="pre">site_number</span></code></p></li>
-</ul>
-<details class="sphinx-bs dropdown card mb-3">
-<summary class="summary-title card-header">
-Code snippet to create the LUT<div class="summary-down docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
-<div class="summary-up docutils">
-<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
-</summary><div class="summary-content card-body docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_emtf_site_initializer</span><span class="p">():</span>
-  <span class="n">default_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
-  <span class="n">lut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">default_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># ME1/1a</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># ME1/1b</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ME1/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ME1/3</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ME2/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ME2/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># ME3/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># ME3/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># ME4/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># ME4/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># RE1/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># RE1/3</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># RE2/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># RE2/3</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/3</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/2</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/3</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1"># GE1/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># GE2/1</span>
-  <span class="n">lut</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1"># ME0</span>
-  <span class="k">return</span> <span class="n">lut</span>
-</pre></div>
-</div>
-</div>
-</details></div>
 <div class="section" id="emtf-host-numbers">
 <h3>EMTF++ ‘host’ numbers<a class="headerlink" href="#emtf-host-numbers" title="Permalink to this headline">¶</a></h3>
 <p>The EMTF++ host numbers are encoded using a LUT:</p>
@@ -498,6 +448,56 @@ Code snippet to create the LUT<div class="summary-down docutils">
   <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span> <span class="c1"># RE4/2</span>
   <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">17</span> <span class="c1"># RE4/3</span>
   <span class="n">lut</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">18</span> <span class="c1"># ME0</span>
+  <span class="k">return</span> <span class="n">lut</span>
+</pre></div>
+</div>
+</div>
+</details></div>
+<div class="section" id="emtf-site-numbers">
+<h3>EMTF++ ‘site’ numbers<a class="headerlink" href="#emtf-site-numbers" title="Permalink to this headline">¶</a></h3>
+<p>The EMTF++ site numbers are encoded using a LUT:</p>
+<ul class="simple">
+<li><p>Total: 12</p>
+<ul>
+<li><p>5 from CSC + 4 from RPC + 3 from GEM</p></li>
+</ul>
+</li>
+<li><p>Key: <code class="docutils literal notranslate"><span class="pre">(subsystem,</span> <span class="pre">station,</span> <span class="pre">ring)</span></code></p></li>
+<li><p>Mapped: <code class="docutils literal notranslate"><span class="pre">site_number</span></code></p></li>
+</ul>
+<details class="sphinx-bs dropdown card mb-3">
+<summary class="summary-title card-header">
+Code snippet to create the LUT<div class="summary-down docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="summary-up docutils">
+<svg version="1.1" width="24" height="24" class="octicon octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="summary-content card-body docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_emtf_site_initializer</span><span class="p">():</span>
+  <span class="n">default_value</span> <span class="o">=</span> <span class="o">-</span><span class="mi">99</span>
+  <span class="n">lut</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span> <span class="n">default_value</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># ME1/1a</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># ME1/1b</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ME1/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># ME1/3</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ME2/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># ME2/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># ME3/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># ME3/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># ME4/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># ME4/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># RE1/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># RE1/3</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># RE2/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1"># RE2/3</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1"># RE3/3</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/2</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># RE4/3</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1"># GE1/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1"># GE2/1</span>
+  <span class="n">lut</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="mi">11</span> <span class="c1"># ME0</span>
   <span class="k">return</span> <span class="n">lut</span>
 </pre></div>
 </div>
