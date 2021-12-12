@@ -36,6 +36,7 @@ jobs:
         jupyter-book build emtf_book/
         sed -i '/thebe@0\.5\.1/d' emtf_book/_build/html/*.html
         sed -i '/sphinx-thebe\.js/d' emtf_book/_build/html/*.html
+        sed -i 's/col-12 col-md-9 pl-md-3 pr-md-0/col-12 col-md-9 pl-md-5 pr-md-0/' emtf_book/_build/html/*.html
 
     # Push the book's HTML to github-pages
     - name: GitHub Pages action
