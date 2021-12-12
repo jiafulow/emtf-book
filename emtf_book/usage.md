@@ -163,3 +163,4 @@ rm -rf $CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/emtf_hlslib/
 mv emtf_hlslib $CMSSW_BASE/src/L1Trigger/Phase2L1EMTF/src/
 ```
 
+Also, to comply with the CMSSW coding style, you should call `scram b code-format` before compiling it.
