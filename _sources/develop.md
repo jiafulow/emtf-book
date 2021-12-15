@@ -86,9 +86,10 @@ Then, install TensorFlow via pip:
 conda activate tf
 pip install -U pip
 pip install -U tensorflow=2.6.0
+pip install -U tensorflow-model-optimization=0.7.0
 ```
 
-For the sake of consistency, it is recommeded to stay with TensorFlow `v2.6.0` rather than using the latest version.
+For the sake of consistency, it is recommeded to stay with TensorFlow `v2.6.0` and TensorFlow Model Optimization Toolkit `v0.7.0` rather than using the latest version.
 
 Finally, install this EMTF++ Python package (unpublished):
 

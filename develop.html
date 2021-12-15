@@ -334,9 +334,10 @@ conda env create --file conda-tf-environment.yml
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate tf
 pip install -U pip
 pip install -U <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.6.0
+pip install -U tensorflow-model-optimization<span class="o">=</span><span class="m">0</span>.7.0
 </pre></div>
 </div>
-<p>For the sake of consistency, it is recommeded to stay with TensorFlow <code class="docutils literal notranslate"><span class="pre">v2.6.0</span></code> rather than using the latest version.</p>
+<p>For the sake of consistency, it is recommeded to stay with TensorFlow <code class="docutils literal notranslate"><span class="pre">v2.6.0</span></code> and TensorFlow Model Optimization Toolkit <code class="docutils literal notranslate"><span class="pre">v0.7.0</span></code> rather than using the latest version.</p>
 <p>Finally, install this EMTF++ Python package (unpublished):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone git@github.com:jiafulow/emtf-nnet.git
 <span class="nb">cd</span> emtf-nnet
